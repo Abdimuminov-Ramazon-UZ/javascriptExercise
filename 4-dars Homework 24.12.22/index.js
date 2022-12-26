@@ -149,14 +149,14 @@
 
 //Exercise 8
 //Times table
-let a = +prompt("Which are you number of time table ?", ""),
-    b = +prompt(
-        "How many numbers should be multiplied in the multiplication table? ",
-        ""
-    );
+// let a = +prompt("Which are you number of time table ?", ""),
+//     b = +prompt(
+//         "How many numbers should be multiplied in the multiplication table? ",
+//         ""
+//     );
 
-// let i = 2;
-for (let i = 2; i <= b; i++) {
-    let c = a * i;
-    alert(`${a}*${i}=${c}`);
-}
+// // let i = 2;
+// for (let i = 2; i <= b; i++) {
+//     let c = a * i;
+//     alert(`${a}*${i}=${c}`);
+// }
