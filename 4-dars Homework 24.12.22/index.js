@@ -160,3 +160,14 @@
 //     let c = a * i;
 //     alert(`${a}*${i}=${c}`);
 // }
+
+//Independent Exercises
+//Greatest common divisor
+let n = 12;
+outer: for (; n >= 2; n--) {
+    inner: for (let j = 1; j < n; j++) {
+        if (n % j === 0);
+        break outer;
+    }
+    console.log(n);
+}
