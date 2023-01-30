@@ -14,9 +14,18 @@
 // //Exercise 2
 // //getCount(str) function yozilsin functiondagi str dagi harflar sanog'ini chiqarib bersin ex: str="webbrain"  output {w:1,e:1....}
 //function to print occurrence of character
-// function getCount(str) {
+function getCount(str1) {
+  let str = str1.toLowerCase();
+  let count = {};
+  for (value of str) {
+    count[value] = count[value] ? count[value] + 1 : 1;
+  }
+  return count;
+}
 
-// console.log(getCount("webbbbbr"));
+console.log(getCount("weBVbbbr"));
+// let sum = 2;
+// console.log(sum > 1);
 // //Exercise 3
 // //truncate(str,n) - function yozilsin berilgan stringdan n ta harf ajratib bersin
 // //ex: str="webbrain academy " n=5 res:"webbr"
@@ -33,22 +42,14 @@
 // //Exercise 5
 // //berilgan string ichidagi string va character,numberlarni sanog'ini chiqarsin ex:webrrain#%&%$%5512  res : {letter:6,char:3,numb:4}
 function getFrac(str) {
-  let obj = {};
-  let sum = 1,
-    sum1 = 1,
-    sum2 = 1;
-  for (let i of str) {
-    if ("A" <= i <= "z") {
-      obj.letter = sum++;
-    } else if ("0" <= i <= "9") {
-      obj.number = sum1++;
-    } else {
-      obj.char = sum2++;
-    }
+  let str1 = str.toLowerCase();
+  console.log(str1);
+  let count = {};
+  for (value of str1) {
   }
-  return obj;
+  return count;
 }
-console.log(getFrac("webrrain#%&%$%5512"));
+console.log(getFrac("weBrrain#%&%$%5512"));
 //Exercise 6
 //capitilize(str) - berilgan stringdagi barcha so'zlarni faqat bosh harfini katta harfga almashtirib chiqish kerak
 // function capitalize(str) {
@@ -115,7 +116,3 @@ console.log(getFrac("webrrain#%&%$%5512"));
 // console.log(truncate("What I'd like to tell on this topic is:", 20)); //= "What I'd like to te…" )
 
 // console.log(truncate("Hi everyone!", 20)); //= "Hi everyone!"
-
-let strn = "join array";
-let arr3 = [...strn];
-console.log(arr3);
