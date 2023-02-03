@@ -114,19 +114,39 @@
 // getMaxSubSum([1, 2, 3]) = 6 (take all)
 // If all items are negative, it means that we take none (the subarray is empty), so the sum is zero:
 // getMaxSubSum([-1, -2, -3]) = 0
-function getSumArr(Arr) {
+// function getMaxSubSum(arr) {
+//   let maxSum = 0;
+//   let partialSum = 0;
+
+//   for (let item of arr) {
+//     console.log(item);
+//     console.log(partialSum);
+//     // for each item of arr
+//     partialSum += item; // add it to partialSum
+//     console.log(partialSum);
+//     maxSum = Math.max(maxSum, partialSum); // remember the maximum
+//     // if (partialSum < 0) partialSum = 0; // zero if negative
+//   }
+
+//   return maxSum;
+// }
+// console.log(getMaxSubSum([1, -2, 3, 4, -9, 6]));
+function getMaxSubSum(Arr) {
   let sum = 0,
-    sumArray = [];
+    maxsum = 0;
 
   for (value of Arr) {
-    sum = 0;
-    sum += value;
-    sumArray.push(sum);
-    if (Arr.length > 0) {
-      Arr.shift();
-    }
-    console.log(Arr);
+    sum = sum + value;
+
+    maxsum = Math.max(maxsum, sum);
+    sum < 0 ? (sum = 0) : sum;
   }
-  return sumArray;
+  console.log(maxsum);
 }
-console.log(getSumArr([1, -2, 3, 4, -9, 6]));
+getMaxSubSum([-1, 2, 3, -9]); //= 5 (the sum of highlighted items)
+getMaxSubSum([2, -1, 2, 3, -9]); // = 6
+getMaxSubSum([-1, 2, 3, -9, 11]); //= 11
+getMaxSubSum([-2, -1, 1, 2]); //= 3
+getMaxSubSum([100, -9, 2, -3, 5]); //= 100
+getMaxSubSum([1, 2, 3]); // = 6 (take all)
+getMaxSubSum([-1, -2, -3]); // 0
