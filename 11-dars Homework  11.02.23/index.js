@@ -1,4 +1,3 @@
-//Exercie  1
 //Exercise 1
 //Translate border-left-width to borderLeftWidth
 // importance: 5
@@ -285,21 +284,146 @@
 //   ];
 
 //   alert( unique(strings) ); // Hare, Krishna, :-O
-function unique(arr) {
-  let newS = new Set(arr);
-  return newS;
-  //   return arr.filter((val, ind, array) => array.indexOf(val) === ind);
-}
+// function unique(arr) {
+//   let newS = new Set(arr);
+//   return newS;
+//   //   return arr.filter((val, ind, array) => array.indexOf(val) === ind);
+// }
 
-let strings = [
-  "Hare",
-  "Krishna",
-  "Hare",
-  "Krishna",
-  "Krishna",
-  "Krishna",
-  "Hare",
-  "Hare",
-  ":-O",
+// let strings = [
+//   "Hare",
+//   "Krishna",
+//   "Hare",
+//   "Krishna",
+//   "Krishna",
+//   "Krishna",
+//   "Hare",
+//   "Hare",
+//   ":-O",
+// ];
+
+//Exercise 11
+//Array ichidagi sonlar yig'indisi toping
+// let arr = [8, 9, 7, 5, 54, 61, 20];
+// let sum = arr.reduce((sum, val) => (sum += val), 0);
+// console.log(sum);
+
+//Exercise 12
+//["webbrain","academy"] ichidagi char sanog'ini topish
+// let strArr = ["webbrain", "academy"];
+// function sumStr(arr) {
+//   return arr.join("").length;
+// }
+// console.log(sumStr(strArr));
+// //har bir elementdagi char sanog'ini topish
+// function sumStrEach(arr) {
+//   let foo = [];
+//   for (index in arr) {
+//     foo[index] = arr[index].length;
+//   }
+//   return foo;
+// }
+// console.log(sumStrEach(strArr));
+
+//Exercise 13
+//arrayni bir biriga taqqoslang
+let arr1 = [7, 8, 4, 5],
+  arr2 = [7, 8, 4, 5];
+console.log(arr1.includes(arr2));
+
+//Execise 14
+let users = [
+  { id: 1, year: 1998, engine: 1, name: "Tico " },
+  { id: 2, year: 2005, engine: 1.2, name: "Matiz" },
+  { id: 3, year: 2010, engine: 1.6, name: "Gentra" },
+  { id: 4, year: 2010, engine: 1.5, name: "Cobalt" },
+  { id: 5, year: 2012, engine: 2, name: "Malibu" },
+  { id: 6, year: 2000, engine: 1.2, name: " Damas" },
+  { id: 7, year: 2018, engine: 2.4, name: "Tracker" },
 ];
-console.log(unique(strings));
+// //1- 2000 yildan oldingi mashinalar ro'yxatini chiqaring
+// let sheetDown2000 = users.filter((val) => val.year < 2000);
+// console.log(sheetDown2000);
+// //2- 2010 yildan keyingi mashinalar ro'yxatini chiqaring
+// let sheetup2010 = users.filter((val) => val.year > 2010);
+// console.log(sheetup2010);
+// //3- engine kuchiga qarab datalarni sort qiling
+// let sheetForceEngine = users.sort((a, b) => a.engine - b.engine);
+// console.log(sheetForceEngine);
+// //4- chiqarilgan yilig qarab ma'lumotlarni sort qiling
+// let sheetWorYea = users.sort((a, b) => a.year - b.year);
+// console.log(sheetWorYea);
+// //5- ismlarni Alphabet tarzida sort qiling
+// let sheetOrdAlphabet = users.sort((a, b) => a.name - b.name);
+// console.log(sheetOrdAlphabet);
+// //6- 2000 yildan oldingi mashinalarga status: eski ma'lumotni qo'shing
+let newUserData = users
+  .filter((val) => val.year < 2000)
+  .map((val) => ({ ...val, status: "eski" }));
+console.log(newUserData);
+//7- 200-2010 yilda chhiqqan mashinalarga status: o'rta ma'lumotini qo'shing
+let newUserData2 = users
+  .filter(function (val) {
+    2000 >= val.year && val.year >= 2010;
+  })
+  .map((val) => ({ ...val, status: "o'rta" }));
+console.log(newUserData2);
+
+//8-2010-2022 a chhiqqan mashinalarga status: yangi ma'lumotini qo'shing
+let newUserData3 = users
+  .filter((val) => 2010 > val.year > 2022)
+  .map((val) => ({ ...val, status: "yangi" }));
+console.log(newUserData3);
+
+// No7
+// array berilgan array ning ichida objectlar berilgan. object ichida age berilgan. age ni 18dan katta bolgan objectlarni qaytaring
+// let user = {
+//     id: 1,
+//     name: 'Odil',
+//     age: 78,
+//     children: [
+//         {
+//             id: 1,
+//             name: 'Umar',
+//             age: 54,
+//             children: [
+//                 { id: 1, name: 'Asmo', age: 34 },
+//                 { id: 2, name: 'Osim', age: 30 },
+//                 { id: 3, name: 'Xattob', age: 25 },
+//             ]
+//         },
+//         { id: 2, name: 'Umar', age: 54 },
+//         { id: 3, name: 'Umar', age: 54 },
+//     ]
+// }
+// No8
+// array ichida object berilgan. job berilgan objectlarni qaytaring
+// let arr=[
+//     {id:1,name:'Usmon',job:'developer'},
+//     {id:2,name:'Usmon',job:'developer'},
+//     {id:3,name:'Usmon'},
+//     {id:4,name:'Usmon',job:'developer'},
+//     {id:5,name:'Usmon'}
+// ]
+// No9
+// objectdan clone oling birinchi objni o'zgartirsa ikkinchisi malumotlari ozgarmasligi kk
+// let obj={
+// id:1,name:'Usmon',job:'developer'
+// }
+// No13
+// talaba oz malumotlarini toldirmoqda. sizga object va massiv berilgan. massiv ichida uzbekiston viloyatlari berilgan. agar talaba massiv ichidagi viloyatlardan boshqa tanlasa bizning filallarimiz faqat shu viloyatlarda degan natija chiqsin.
+// arr=['Andijon','Namangan','Qarshi','toshkent']
+
+// No14
+// talabalar malumotlari massiv berilgan. massiv objectlardan tashkil topgan. objectda login parol keltirilgan.
+// funksiyaga login va parol jonatiladi.
+// agar login parol togri bolsa 'hush kelibsiz' aks holda 'login yoki parol xato degan qiymat chiqazing'
+// let arr=[
+//     {id:3,name:'Usmon',parol:'1231'},
+//     {id:1,name:'Umar',parol:'1241'},
+//     {id:5,name:'Jasur',parol:'3452'}
+//     {id:2,name:'Asmo',parol:'2312'},
+//     {id:4,name:'Salohiddin',parol:'3421'},
+// ]
+// logIn('Umar','2113') => xato
+// logIn('Salohiddin','3421') => hush kelibsiz
