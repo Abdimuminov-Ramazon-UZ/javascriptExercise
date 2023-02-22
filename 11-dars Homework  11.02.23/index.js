@@ -327,9 +327,9 @@
 
 //Exercise 13
 //arrayni bir biriga taqqoslang
-let arr1 = [7, 8, 4, 5],
-  arr2 = [7, 8, 4, 5];
-console.log(arr1.includes(arr2));
+// let arr1 = [7, 8, 4, 5],
+//   arr2 = [7, 8, 4, 5];
+// console.log(arr1.includes(arr2));
 
 //Execise 14
 let users = [
@@ -357,63 +357,96 @@ let users = [
 // let sheetOrdAlphabet = users.sort((a, b) => a.name - b.name);
 // console.log(sheetOrdAlphabet);
 // //6- 2000 yildan oldingi mashinalarga status: eski ma'lumotni qo'shing
-let newUserData = users
-  .filter((val) => val.year < 2000)
-  .map((val) => ({ ...val, status: "eski" }));
-console.log(newUserData);
+// let newUserData = users
+//   .filter((val) => val.year < 2000)
+//   .map((val) => ({ ...val, status: "eski" }));
+// console.log(newUserData);
 //7- 200-2010 yilda chhiqqan mashinalarga status: o'rta ma'lumotini qo'shing
-let newUserData2 = users
-  .filter(function (val) {
-    2000 >= val.year && val.year >= 2010;
-  })
-  .map((val) => ({ ...val, status: "o'rta" }));
-console.log(newUserData2);
+// let newUserData2 = users
+//   .filter((val) => val.year > 2000)
+//   .filter((val) => val.year <= 2010)
+//   .map((val) => ({ ...val, status: "o'rta" }));
+// console.log(newUserData2);
 
 //8-2010-2022 a chhiqqan mashinalarga status: yangi ma'lumotini qo'shing
-let newUserData3 = users
-  .filter((val) => 2010 > val.year > 2022)
-  .map((val) => ({ ...val, status: "yangi" }));
-console.log(newUserData3);
+
+// let newUserData3 = users
+//   .filter((val) => val.year > 2010)
+//   .map((val) => ({ ...val, status: "yangi" }));
+// console.log(newUserData3);
 
 // No7
 // array berilgan array ning ichida objectlar berilgan. object ichida age berilgan. age ni 18dan katta bolgan objectlarni qaytaring
-// let user = {
-//     id: 1,
-//     name: 'Odil',
-//     age: 78,
-//     children: [
-//         {
-//             id: 1,
-//             name: 'Umar',
-//             age: 54,
-//             children: [
-//                 { id: 1, name: 'Asmo', age: 34 },
-//                 { id: 2, name: 'Osim', age: 30 },
-//                 { id: 3, name: 'Xattob', age: 25 },
-//             ]
-//         },
-//         { id: 2, name: 'Umar', age: 54 },
-//         { id: 3, name: 'Umar', age: 54 },
-//     ]
+let user = {
+  id: 1,
+  name: "Odil",
+  age: 78,
+  children: [
+    {
+      id: 1,
+      name: "Umar",
+      age: 54,
+      children: [
+        { id: 1, name: "Asmo", age: 34 },
+        { id: 2, name: "Osim", age: 30 },
+        { id: 3, name: "Xattob", age: 25 },
+      ],
+    },
+    { id: 2, name: "Umar", age: 54 },
+    { id: 3, name: "Umar", age: 54 },
+  ],
+};
+// // let newM = Object.entries(user);
+// // console.log(newM.length);
+// function openObj(obj) {
+//   while (obj) {
+//     console.log(typeof obj.children);
+//   obj.children=obj
+//   if(obj){
+
+//   }
+
+//     console.log(obj);
+//   }
 // }
+// openObj(user);
+
 // No8
 // array ichida object berilgan. job berilgan objectlarni qaytaring
-// let arr=[
-//     {id:1,name:'Usmon',job:'developer'},
-//     {id:2,name:'Usmon',job:'developer'},
-//     {id:3,name:'Usmon'},
-//     {id:4,name:'Usmon',job:'developer'},
-//     {id:5,name:'Usmon'}
-// ]
+// let arr = [
+//   { id: 1, name: "Usmon", job: "developer" },
+//   { id: 2, name: "Usmon", job: "developer" },
+//   { id: 3, name: "Usmon" },
+//   { id: 4, name: "Usmon", job: "developer" },
+//   { id: 5, name: "Usmon" },
+// ];
+// console.log(arr.filter((val) => val.job));
+
 // No9
 // objectdan clone oling birinchi objni o'zgartirsa ikkinchisi malumotlari ozgarmasligi kk
-// let obj={
-// id:1,name:'Usmon',job:'developer'
-// }
+// let obj = {
+//   id: 1,
+//   name: "Usmon",
+//   job: "developer",
+// };
+// let obj1 = {};
+// Object.assign(obj1, obj);
+// obj.id = 2;
+// console.log(obj);
+// console.log(obj1);
 // No13
 // talaba oz malumotlarini toldirmoqda. sizga object va massiv berilgan. massiv ichida uzbekiston viloyatlari berilgan. agar talaba massiv ichidagi viloyatlardan boshqa tanlasa bizning filallarimiz faqat shu viloyatlarda degan natija chiqsin.
-// arr=['Andijon','Namangan','Qarshi','toshkent']
+// let arr = ["Andijon", "Namangan", "Qarshi", "toshkent"];
+// function fillData(region) {
+//   let dataObj = {};
+//   arr.map((val) => (val === region ? (dataObj.region = val) : val));
 
+//   return Object.keys(dataObj).length === 1
+//     ? dataObj
+//     : console.log("bizning filallarimiz faqat shu viloyatlarda");
+// }
+// console.log(fillData("Andijon"));
+// console.log(fillData("Qashqadaryo"));
 // No14
 // talabalar malumotlari massiv berilgan. massiv objectlardan tashkil topgan. objectda login parol keltirilgan.
 // funksiyaga login va parol jonatiladi.
@@ -427,3 +460,17 @@ console.log(newUserData3);
 // ]
 // logIn('Umar','2113') => xato
 // logIn('Salohiddin','3421') => hush kelibsiz
+// let arr = [
+//   { id: 3, name: "Usmon", parol: "1231" },
+//   { id: 1, name: "Umar", parol: "1241" },
+//   { id: 5, name: "Jasur", parol: "3452" },
+//   { id: 2, name: "Asmo", parol: "2312" },
+//   { id: 4, name: "Salohiddin", parol: "3421" },
+// ];
+// function logIn(name, passw) {
+//   arr.filter((val) => val.name === name && val.parol === passw).length === 1
+//     ? console.log("xush kelibsiz")
+//     : console.log("xato");
+// }
+// logIn("Umar", "2113"); //=> xato
+// logIn("Salohiddin", "3421"); // => hush kelibsiz
