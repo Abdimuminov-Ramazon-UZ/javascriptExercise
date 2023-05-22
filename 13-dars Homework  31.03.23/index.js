@@ -159,11 +159,136 @@
 // For instance, if now is  23:00 , then:
 // getSecondsToTomorrow() == 3600
 // P.S. The function should work at any day, the “today” is not hardcoded.
-function getSecondsToTomorrow() {
-  let now = new Date(),
-    tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1),
-    diff = tomorrow - now;
+// function getSecondsToTomorrow() {
+//   let now = new Date(),
+//     tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1),
+//     diff = tomorrow - now;
 
-  return Math.round(diff / 60);
-}
-console.log(getSecondsToTomorrow());
+//   return Math.round(diff / 60);
+// }
+// console.log(getSecondsToTomorrow());
+
+//Exercise  10
+
+// Format the relative date
+// importance: 4
+// Write a function  formatDate(date)  that should format  date  as follows:
+// If since  date  passed less than 1 second, then  "right now" .
+// Otherwise, if since  date  passed less than 1 minute, then  "n sec. ago" .
+// Otherwise, if less than an hour, then  "m min. ago" .
+// Otherwise, the full date in the format  "DD.MM.YY HH:mm" . That is:  "day.month.year
+// hours:minutes" , all in 2-digit format, e.g.  31.12.16 10:00 .
+// For instance:
+// Open a sandbox with tests. 
+// To solution
+// Let’s say we have a complex object, and we’d like to convert it into a string, to send it over a
+// network, or just to output it for logging purposes.
+// Naturally, such a string should include all important properties.
+// We could implement the conversion like this:
+
+// alert( formatDate(new Date(new Date - 1)) ); // "right now"
+
+// alert( formatDate(new Date(new Date - 30 * 1000)) ); // "30 sec. ago"
+
+// alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5 min. ago"
+
+// // yesterday's date like 31.12.2016, 20:00
+// alert( formatDate(new Date(new Date - 86400 * 1000)) );
+
+// function formatDate(date) {
+//   let diff = new Date() - date;
+
+//   // return diff;
+//   if (diff < 1000) {
+//     return "right now";
+//   }
+//   let sec = Math.floor(diff / 1000);
+//   if (sec < 60) {
+//     return sec + "  sec. ago";
+//   }
+//   let min = Math.floor(diff / 60000);
+//   if (min < 60) {
+//     return min + " min.ago";
+//   }
+//   let date1 = [
+//     "0" + diff.getDay(),
+//     "0" + diff.getMonth(),
+//     "0" + diff.getFullYear(),
+//   ].map((components) => components.slice(-2));
+//   return date1.slice(0, 3).join(".");
+//   // return console.log(diff);
+// }
+// console.log(formatDate(new Date(new Date() - 10000)));
+
+//Exercise 11
+// Turn the object into JSON and back
+
+// Turn the  user  into JSON and then read it back into another variable.
+let user = {
+  name: "John Smith",
+  age: 35,
+};
+let userJSON = JSON.stringify(user);
+console.log(typeof userJSON); //String
+console.log(userJSON);
+
+//Exercise 12
+// Exclude backreferences
+// importance: 5
+// In simple cases of circular references, we can exclude an offending property from serialization
+// by its name.
+// But sometimes there are many backreferences. And names may be used both in circular
+// references and normal properties.
+// Write  replacer  function to stringify everything, but remove properties that reference
+// meetup :
+let room = {
+  number: 23,
+};
+
+let meetup = {
+  title: "Conference",
+  occupiedBy: [{ name: "John" }, { name: "Alice" }],
+  place: room,
+};
+
+// circular references
+room.occupiedBy = meetup;
+meetup.self = meetup;
+console.log(meetup);
+console.log(room);
+
+console.log(
+  JSON.stringify(meetup, function replacer(key, value) {
+    return key != "" && value == meetup ? undefined : value;
+  })
+);
+
+// /* result should be:
+// {
+//   "title":"Conference",
+//   "occupiedBy":[{"name":"John"},{"name":"Alice"}],
+//   "place":{"number":23}
+// }
+// */
+
+let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+
+let meetup1 = JSON.parse(str, function (key, value) {
+  if (key == "date") return new Date(value);
+  return value;
+});
+
+console.log(meetup1.date.getDate()); // now works!
+let us = {
+  family: false,
+  school: true,
+  age: null,
+};
+let usJson = JSON.stringify(us, ["family", "age"], 2);
+let usParse = JSON.parse(usJson, function (key, value) {
+  if (key === "age") {
+    return value + 19;
+  }
+  return value;
+});
+console.log(usParse);
