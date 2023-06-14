@@ -138,4 +138,3 @@ let readMessages = new WeakMap();
 for (let val of messages) {
   readMessages.set(val, new Date());
 }
-console.log(Array.from(readMessages));
